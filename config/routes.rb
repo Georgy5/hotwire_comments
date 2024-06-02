@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :posts
   if Rails.env.development? || Rails.env.test?
     mount Railsui::Engine, at: "/railsui"
   end
@@ -7,7 +6,7 @@ Rails.application.routes.draw do
   # Inherits from Railsui::PageController#index
   # To overide, add your own page#index view or change to a new root
   # Visit the start page for Rails UI any time at /railsui/start
-  root action: :index, controller: "railsui/page"
+  # root action: :index, controller: "railsui/page"
 
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -16,6 +15,8 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
+  resources :posts
+
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "posts#index"
 end
