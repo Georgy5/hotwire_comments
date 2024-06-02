@@ -21,4 +21,12 @@
     </div>
   </div>
   <%= render @post %>
+
+  <div class="my-16">
+    <h2 class="text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">
+      <%= pluralize(@post.comments.size, 'comment') %>
+    </h2>
+
+    <%= render "comments/form", post: @post, comment: @comment %>
+  </div>
 </div>
